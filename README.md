@@ -38,7 +38,7 @@ Conferências:
 
 - [The old "var"](https://javascript.info/var)
 - [The Modern JavaScript Tutorial](https://javascript.info/)
-- [Introdution to Programming with JavaScript](https://launchschool.com/books/javascript)
+- [Introduction to Programming with JavaScript](https://launchschool.com/books/javascript)
 - [JavaScript Eloquente](https://github.com/braziljs/eloquente-javascript)
 - [JavaScript is Weird](https://www.youtube.com/watch?v=pZUTdw6zcck)
 
