@@ -52,6 +52,23 @@ Conferências:
 
 Vamos ver como escrever e usar os principais recursos da linguagem.
 
+## Variáveis
+
+```javascript
+const numero = 42
+let mensagem;
+var outraMensagem;
+
+mensagem = 'uma mensagem motivacional'
+outraMensagem = 'mais uma mensagem motivacional'
+```
+
+Referências
+
+- [MDN - const](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/const)
+- [MDN - let](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/let)
+- [MDN - var](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/var)
+
 ## Números e Matemática
 
 ```javascript
@@ -109,7 +126,7 @@ Referências:
 - [MDN -
   Number](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
-## Strings e textos
+## Strings e Textos
 
 ```javascript
 const uma_string = "uma String"
@@ -212,14 +229,11 @@ outro_array.join(' ') // 'um outro array'
 ```
 
 Referências:
-- [MDN -
-  Array](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array)
-- [MDN -
-  for](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for)
-- [MDN -
-  for...of](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for...of)
-- [MDN -
-  Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [MDN - Array](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [MDN - for](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for)
+- [MDN - for...of](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for...of)
+- [MDN - Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [MDN - Espalhamento ...](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
 ## Objetos
 
@@ -234,7 +248,8 @@ const um_objeto = {
   },
   ou_uma_funcao: function (){
     console.log("Sou uma função")
-  }
+  },
+  "você também pode usar caracteres especiais": "aqui"
 }
 
 um_objeto.uma_string
@@ -250,6 +265,110 @@ for (let x of um_objeto) {
 Referências:
 - [MDN -
   Objetos](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+## Expressões Regulares
+
+```javascript
+const regex1 = /ab+c/
+const regex2 = new RegExp("ab+c");
+
+console.log(regex1.test("abc")) // true
+console.log(regex1.test("abbbbbbc")) // true
+console.log(regex1.test("acb")) // false
+```
+
+Referências:
+- [Regex101](https://regex101.com/)
+- [MDN - Expressão regulares](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Regular_Expressions)
+
+
+## Tratamento de erros
+
+```javascript
+try {
+  console.log("Passou aqui")
+  throw new Error("Deu um erro aqui!")
+  console.log("Não passou aqui")
+} catch (erro) {
+  console.log("Peguei esse erro aqui:", erro);
+} finally {
+  console.log("Independente de ter ou não um erro, passa aqui")
+}
+```
+
+Referências:
+- [MDN - try...catch](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/try...catch)
+- [MDN - throw](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/throw)
+- [MDN - Error](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Error)
+
+## Estruturas de Controle
+
+```javascript
+const pontuacao = 75;
+if (pontuacao > 90) {
+  console.log('Excelente!');
+} else if (pontuacao > 75) {
+  console.log('Muito bom!');
+} else if (pontuacao > 60) {
+  console.log('Bom.');
+} else {
+  console.log('Precisa melhorar.');
+}
+
+const pessoa = {
+  nome: 'João',
+  idade: 30,
+  profissao: 'Desenvolvedor'
+};
+for (const chave in pessoa) {
+  console.log(`${chave}: ${pessoa[chave]}`);
+}
+
+const frutas = ['Maçã', 'Banana', 'Pera'];
+for (const fruta of frutas) {
+  console.log(fruta);
+}
+
+let contador = 0;
+while (contador < 3) {
+  console.log(`While loop: contador vale ${contador}.`);
+  contador++;
+}
+
+const dia = 4;
+switch (dia) {
+  case 1:
+    console.log('Segunda-feira');
+    break;
+  case 2:
+    console.log('Terça-feira');
+    break;
+  case 3:
+    console.log('Quarta-feira');
+    break;
+  case 4:
+    console.log('Quinta-feira');
+    break;
+  case 5:
+    console.log('Sexta-feira');
+    break;
+  default:
+    console.log('Final de semana!');
+}
+
+let contador = 0;
+do {
+  console.log(`Do while loop: contador vale ${contador}.`);
+  contador++;
+} while (contador < 3);
+
+```
+
+Referências:
+- [MDN - if...else](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/if...else)
+- [MDN - switch](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/switch)
+- [MDN - while](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/while)
+- [MDN - do...while](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/do...while)
 
 ## Funções
 
@@ -267,10 +386,12 @@ const funcaoFlexa2 = (x) => { console.log(x) }
 ```
 
 Referências:
-- [MDN -
-  Funções](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions)
-- [MDN -
-  arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)
+- [MDN - Funções](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions)
+- [MDN - arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments)
+- [MDN - IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)
+- [MDN - function*](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/function*)
+- [MDN - async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/async_function)
+- [MDN - await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await)
 
 ## Classes
 
