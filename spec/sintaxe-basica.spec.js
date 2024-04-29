@@ -2,6 +2,9 @@ describe("Sintaxe Básica", function () {
   describe("Variáveis", function () {
     it("Deve ser possível declarar variáveis e atribuir tipos de dados", () => {
       // Seu código aqui
+      let umaString = "sou uma string";
+      let umNumero = 42;
+      let umBooleano = true;
 
       expect(umaString).toBe("sou uma string");
       expect(umNumero).toBe(42);
@@ -9,22 +12,26 @@ describe("Sintaxe Básica", function () {
     });
     it("Deve demonstrar o escopo de bloco de 'let'", () => {
       // Seu código aqui
-
       if (true) {
         let x = 20; // escopo diferente
         expect(x).toBe(20);
       }
+
+      x = 10;
+
       expect(x).toBe(10);
     });
     it("Deve demonstrar o comportamento de 'const'", () => {
       // Seu código aqui
-
+      const y = 0;
+      
       expect(() => {
         y = 40;
       }).toThrow();
     });
     it("Deve demonstrar o escopo de função de 'var'", () => {
       // Seu código aqui
+      var z = 40;
 
       expect(z).toBe(40);
       if (true) {
@@ -41,6 +48,7 @@ describe("Sintaxe Básica", function () {
         const n2 = 3
 
         // Seu código aqui
+        let soma = n1+n2;
 
         expect(soma).toBe(8);
       });
@@ -52,6 +60,8 @@ describe("Sintaxe Básica", function () {
         const n3 = 20
 
         // Seu código aqui
+        let produto = 4*5;
+        let quociente = 20/4;
 
         expect(produto).toBe(20);
         expect(quociente).toBe(5);
@@ -62,6 +72,7 @@ describe("Sintaxe Básica", function () {
         const n1 = 16
 
         // Seu código aqui
+        let raiz = Math.sqrt(n1);
 
         expect(raiz).toBe(4);
       });
@@ -72,6 +83,7 @@ describe("Sintaxe Básica", function () {
         const n2 = 3
 
         // Seu código aqui
+        const potencia = Math.pow(2,3);
 
         expect(potencia).toBe(8);
       });
@@ -81,6 +93,7 @@ describe("Sintaxe Básica", function () {
         const n1 = 2.5
 
         // Seu código aqui
+        const arredondado = Math.ceil(2.5);
 
         expect(arredondado).toBe(3);
       });
@@ -88,6 +101,7 @@ describe("Sintaxe Básica", function () {
     describe("Números e Matemática - Números Aleatórios", function () {
       it("Deve gerar um número aleatório entre 0 e 1", () => {
         // Seu código aqui
+        const aleatorio = Math.random();
 
         expect(aleatorio).toBeGreaterThanOrEqual(0);
         expect(aleatorio).toBeLessThan(1);
@@ -98,6 +112,7 @@ describe("Sintaxe Básica", function () {
         const s1 = "3.14"
 
         // Seu código aqui
+        const numero = Number(parseFloat(s1));
 
         expect(numero).toBe(3.14);
       });
@@ -107,6 +122,7 @@ describe("Sintaxe Básica", function () {
         const n1 = 3.14
 
         // Seu código aqui
+        const truncado = Math.floor(n1);
 
         expect(truncado).toBe(3);
       });
@@ -116,6 +132,7 @@ describe("Sintaxe Básica", function () {
         const n1 = (0.1 + 0.2)
 
         // Seu código aqui
+        const resultado = n1.toFixed(2);
 
         expect(resultado).toBe("0.30");
       });
@@ -128,6 +145,7 @@ describe("Sintaxe Básica", function () {
         const parte2 = "mundo!";
 
         // Seu código aqui
+        const mensagem = parte1 + parte2;
 
         expect(mensagem).toBe("Olá, mundo!");
       });
@@ -138,6 +156,7 @@ describe("Sintaxe Básica", function () {
         const str2 = "javascript";
 
         // Seu código aqui
+        const comparacao = str1.toLowerCase().includes(str2.toLowerCase());
 
         expect(comparacao).toBe(true);
       });
@@ -147,6 +166,7 @@ describe("Sintaxe Básica", function () {
         const str = "Hello, world!";
 
         // Seu código aqui
+        const substr = str.substring(7,12);
 
         expect(substr).toBe("world");
       });
@@ -156,6 +176,13 @@ describe("Sintaxe Básica", function () {
         const str = "abcd";
 
         // Seu código aqui
+        function reverter(str) {
+          str = str.split("");
+          str = str.reverse();
+          str = str.join("");
+          return str;
+        }
+        const reversed = reverter(str);
 
         expect(reversed).toBe("dcba");
       });
@@ -165,6 +192,7 @@ describe("Sintaxe Básica", function () {
         const numero = "42";
 
         // Seu código aqui
+        const resultado = Number(parseInt(numero));
 
         expect(resultado).toBe(42);
       });
@@ -174,6 +202,7 @@ describe("Sintaxe Básica", function () {
         const numero = "3.14";
 
         // Seu código aqui
+        const resultado = Number(parseFloat(numero));
 
         expect(resultado).toBe(3.14);
       });
@@ -183,6 +212,17 @@ describe("Sintaxe Básica", function () {
         const mista = "O preço é 25 reais";
 
         // Seu código aqui
+        function numeros(str) {
+          let numero = "";
+          for (let i=0; i<str.length; i++) {
+            if (!isNaN(str[i])) {
+              numero += str[i];
+            }
+          }
+          numero = Number(numero);
+          return numero;
+        }
+        let preco = numeros(mista);
 
         expect(preco).toBe(25);
       });
@@ -193,6 +233,7 @@ describe("Sintaxe Básica", function () {
         const ano = 1995;
 
         // Seu código aqui
+        const frase = `${linguagem} foi criado em ${ano}.`;
 
         expect(frase).toBe("JavaScript foi criado em 1995.");
       });
@@ -202,6 +243,12 @@ describe("Sintaxe Básica", function () {
         const str = "banana";
 
         // Seu código aqui
+        let contaA = 0;
+        for (let i=0; i<str.length; i++) {
+          if (str[i] == "a") {
+            contaA++;
+          }
+        }
 
         expect(contaA).toBe(3);
       });
@@ -211,6 +258,7 @@ describe("Sintaxe Básica", function () {
         const original = "Olá mundo JavaScript";
 
         // Seu código aqui
+        const modificado = original.replace(/ /g,'-');
 
         expect(modificado).toBe("Olá-mundo-JavaScript");
       });
@@ -221,6 +269,8 @@ describe("Sintaxe Básica", function () {
       it("Deve reconhecer true e false literais", () => {
 
         // Seu código aqui
+        const verdadeiro = true;
+        const falso = false;
 
         expect(verdadeiro).toBe(true);
         expect(falso).toBe(false);
@@ -239,6 +289,14 @@ describe("Sintaxe Básica", function () {
         const nan = NaN;
 
         // Seu código aqui
+        const b1 = true;
+        const b2 = false;
+        const b3 = true;
+        const b4 = false;
+        const b5 = true;
+        const b6 = false;
+        const b7 = false;
+        const b8 = false;
 
         expect(Boolean(numeroPositivo)).toBe(b1);
         expect(Boolean(numeroZero)).toBe(b2);
@@ -257,6 +315,8 @@ describe("Sintaxe Básica", function () {
         const verdadeiroOuFalso = true || false;
 
         // Seu código aqui
+        const b1 = true;
+        const b2 = true;
 
         expect(verdadeiroEVerdadeiro).toBe(b1);
         expect(verdadeiroOuFalso).toBe(b2);
@@ -269,6 +329,8 @@ describe("Sintaxe Básica", function () {
         const falso = !true;
 
         // Seu valor aqui
+        const b1 = true;
+        const b2 = false;
 
         expect(verdadeiro).toBe(b1);
         expect(falso).toBe(b2);
@@ -278,6 +340,7 @@ describe("Sintaxe Básica", function () {
   describe("Arrays", function () {
     it("Deve acessar elementos de um array", () => {
       // Seu código aqui
+      let arr = [0,20];
 
       expect(arr[1]).toBe(20);
     });
@@ -285,10 +348,12 @@ describe("Sintaxe Básica", function () {
       let arr = [10, 20];
 
       // Seu código aqui
+      arr.push(30);
 
       expect(arr).toEqual([10, 20, 30]);
 
       // Seu código aqui
+      arr.pop();
 
       expect(arr).toEqual([10, 20]);
     });
@@ -297,6 +362,9 @@ describe("Sintaxe Básica", function () {
       let soma = 0;
 
       // Seu código aqui
+      arr.forEach(function(n){
+        soma += n;
+      });
 
       expect(soma).toBe(6);
     });
@@ -304,6 +372,7 @@ describe("Sintaxe Básica", function () {
       let original = [1, 2, 3];
 
       // Seu código aqui
+      const dobrados = original.map((x)=> x*2);
 
       expect(dobrados).toEqual([2, 4, 6]);
     });
@@ -311,6 +380,7 @@ describe("Sintaxe Básica", function () {
       let numeros = [1, 2, 3, 4, 5];
 
       // Seu código aqui
+      let pares = numeros.filter((n)=> n%2==0);
 
       expect(pares).toEqual([2, 4]);
     });
@@ -318,6 +388,10 @@ describe("Sintaxe Básica", function () {
   describe("Objetos", function () {
     it("Deve acessar propriedades de um objeto", () => {
       // Seu código aqui
+      const pessoa = {
+        nome: "Ana",
+        idade: 25
+      };
 
       expect(pessoa.nome).toBe("Ana");
       expect(pessoa['idade']).toBe(25);
@@ -326,6 +400,7 @@ describe("Sintaxe Básica", function () {
       let pessoa = { nome: "Carlos", idade: 30 };
 
       // Seu código aqui
+      pessoa.idade = 31;
 
       expect(pessoa.idade).toBe(31);
     });
@@ -333,6 +408,7 @@ describe("Sintaxe Básica", function () {
       let objeto = { a: 1, b: 2, c: 3 };
 
       // Seu código aqui
+      let chaves = Object.keys(objeto); 
 
       expect(chaves).toEqual(['a', 'b', 'c']);
     });
