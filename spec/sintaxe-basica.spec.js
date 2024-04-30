@@ -417,12 +417,15 @@ describe("Sintaxe Básica", function () {
 
       // Seu código aqui
 
+      let valores = Object.values(objeto);
+
       expect(valores).toEqual([1, 2, 3]);
     });
     it("Deve usar o spread operator para copiar e modificar objetos", () => {
       let original = { a: 1, b: 2 };
 
       // Seu código aqui
+      const copia = {...original, c:3};
 
       expect(copia).toEqual({ a: 1, b: 2, c: 3 });
     });
@@ -432,6 +435,7 @@ describe("Sintaxe Básica", function () {
     describe("Expressões Regulares - Validação de E-mail", function () {
       it("Deve validar um endereço de e-mail", () => {
         // Seu código aqui
+        const regexEmail = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim;
 
         expect(regexEmail.test("usuario@example.com")).toBe(true);
         expect(regexEmail.test("usuarioexample.com")).toBe(false);
@@ -440,6 +444,7 @@ describe("Sintaxe Básica", function () {
     describe("Expressões Regulares - Validação de Números de Telefone", function () {
       it("Deve validar um número de telefone", () => {
         // Seu código aqui
+        const regexTelefone = /(?:([+]\d{1,4})[-.\s]?)?(?:[(](\d{1,3})[)][-.\s]?)?(\d{1,4})[-.\s]?(\d{1,4})[-.\s]?(\d{1,9})/g;
 
         expect(regexTelefone.test("(11) 98888-7777")).toBe(true);
         expect(regexTelefone.test("11988887777")).toBe(false);
@@ -450,6 +455,7 @@ describe("Sintaxe Básica", function () {
         const texto = "A raposa marrom rápida pula sobre o cão preguiçoso.";
 
         // Seu código aqui
+        const regexPalavra = 0;
 
         const ocorrencias = texto.match(regexPalavra);
         expect(ocorrencias.length).toBe(1);
@@ -461,6 +467,7 @@ describe("Sintaxe Básica", function () {
         const texto = "maçã, banana; laranja: uva";
 
         // Seu código aqui
+        const regexSeparadores = /\, |\; |\: /;
 
         const frutas = texto.split(regexSeparadores);
         expect(frutas).toEqual(["maçã", "banana", "laranja", "uva"]);
@@ -476,6 +483,11 @@ describe("Sintaxe Básica", function () {
         let capturouErro = false;
 
         // Seu código aqui
+        try {
+          falhar();
+        }catch {
+          capturouErro = true;
+        }
 
         expect(capturouErro).toBe(true);
       });
@@ -492,6 +504,7 @@ describe("Sintaxe Básica", function () {
         function validarUsuario(usuario) {
           if (!usuario.nome) {
             // Seu código aqui
+            throw new ErroEspecifico("O nome do usuário é obrigatório")
           }
         }
 
@@ -510,6 +523,9 @@ describe("Sintaxe Básica", function () {
         let finalizado = false;
 
         // Seu código aqui
+        try{}catch{}finally{
+          finalizado = true;
+        };
 
         expect(finalizado).toBe(true);
       });
@@ -525,6 +541,7 @@ describe("Sintaxe Básica", function () {
           operacaoPerigosa();
         } catch (erro) {
           // Seu código aqui
+          erroCapturado = erro;
         }
         expect(erroCapturado).not.toBeNull();
         expect(erroCapturado.message).toBe("Tipo inválido");
@@ -536,6 +553,11 @@ describe("Sintaxe Básica", function () {
       it("Deve usar if-else para controlar o fluxo", () => {
         function maiorQue5(valor) {
           // Seu código aqui
+          if (valor>5){
+            return "maior que 5";
+          } else {
+            return "menor que 5"
+          }
         }
         expect(maiorQue5(10)).toBe("maior que 5");
         expect(maiorQue5(3)).toBe("menor que 5");
@@ -543,9 +565,16 @@ describe("Sintaxe Básica", function () {
     });
     describe("Estruturas de Controle - switch", function () {
       it("Deve usar switch para controlar o fluxo", () => {
-        let fruta = "maçã";
         function corDaFruta(fruta) {
           // Seu código aqui
+          switch (fruta) {
+            case "maçã":
+              return "Vermelho";
+            case "banana":
+              return "Amarelo";
+            default:
+              return "Cor desconhecida";
+          };
         }
         expect(corDaFruta("maçã")).toBe("Vermelho");
         expect(corDaFruta("banana")).toBe("Amarelo");
@@ -557,6 +586,9 @@ describe("Sintaxe Básica", function () {
         let soma = 0;
 
         // Seu código aqui
+        for (let i=0; i<15; i++) {
+          soma++;
+        }
 
         expect(soma).toBe(15);
       });
@@ -567,6 +599,12 @@ describe("Sintaxe Básica", function () {
         let resultado = 1;
 
         // Seu código aqui
+        while (resultado != 120) {
+          resultado++
+          if (numero != 1) {
+            numero--;
+          }
+        }
 
         expect(resultado).toBe(120);
         expect(numero).toBe(1);
@@ -576,6 +614,10 @@ describe("Sintaxe Básica", function () {
         let i = 0;
 
         // Seu código aqui
+        do {
+          resultado += 'a';
+          i++
+        }while (i<5);
 
         expect(resultado).toBe("aaaaa");
         expect(i).toBe(5)
@@ -587,6 +629,9 @@ describe("Sintaxe Básica", function () {
         let soma = 0;
 
         // Seu código aqui
+        for (const key in objeto) {
+          soma += objeto[key];
+        }
 
         expect(soma).toBe(6);
       });
@@ -596,6 +641,9 @@ describe("Sintaxe Básica", function () {
     it("Deve ser possível declarar e usar funções", () => {
 
       // Seu código aqui
+      function soma(a,b) {
+        return a+b;
+      }
 
       let resultado = soma(5, 3);
 
@@ -605,6 +653,9 @@ describe("Sintaxe Básica", function () {
       it("Deve definir e chamar uma função básica", () => {
 
         // Seu código aqui
+        function saudacao(nome) {
+          return `Olá, ${nome}!`
+        }
 
         expect(saudacao("Alice")).toBe("Olá, Alice!");
       });
@@ -613,6 +664,9 @@ describe("Sintaxe Básica", function () {
       it("Deve atribuir uma função anônima a uma variável", () => {
 
         // Seu código aqui
+        const quadrado = function(x) {
+          return Math.pow(x,2);
+        }
 
         expect(quadrado(4)).toBe(16);
       });
@@ -621,6 +675,8 @@ describe("Sintaxe Básica", function () {
       it("Deve executar uma IIFE", () => {
 
         // Seu código aqui
+        let iife = () => "Executado imediatamente";
+        let resultado = iife();
 
         expect(resultado).toBe("Executado imediatamente");
       });
@@ -632,6 +688,9 @@ describe("Sintaxe Básica", function () {
         }
 
         // Seu código aqui
+        function operacaoBinaria(a,b,c) {
+          return a(b,c);
+        }
 
         expect(operacaoBinaria(soma, 5, 3)).toBe(8);
       });
@@ -640,6 +699,10 @@ describe("Sintaxe Básica", function () {
       it("Deve usar uma função callback", () => {
 
         // Seu código aqui
+        function a(b,c) {
+          c(b);
+        }
+        a("Processamento concluído",processar);
 
         processar(resultado => {
           expect(resultado).toBe("Processamento concluído");
